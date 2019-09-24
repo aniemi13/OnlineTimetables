@@ -1,7 +1,9 @@
-package onlineTimetables.entity.stops;
+package onlineTimetables.entity.stops.relations;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import onlineTimetables.entity.stops.Stop;
 
 public class StopsRelations {
 	private Long id;

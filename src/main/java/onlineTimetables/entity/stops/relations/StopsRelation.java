@@ -1,4 +1,6 @@
-package onlineTimetables.entity.stops;
+package onlineTimetables.entity.stops.relations;
+
+import onlineTimetables.entity.stops.Stop;
 
 public class StopsRelation {
 	private Long id;

@@ -2,6 +2,8 @@ package onlineTimetables.entity.stops;
 
 import onlineTimetables.entity.address.Address;
 import onlineTimetables.entity.address.Coordinates;
+import onlineTimetables.entity.stops.relations.StopsRelation;
+import onlineTimetables.entity.stops.relations.StopsRelations;
 
 public class StopImpl implements Stop {
 	private Long id;
