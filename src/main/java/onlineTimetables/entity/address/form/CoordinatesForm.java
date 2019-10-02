@@ -1,10 +1,14 @@
 package onlineTimetables.entity.address.form;
 
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import onlineTimetables.entity.address.Coordinates;
 
 public class CoordinatesForm {
 	// równoleżnik 90
 	@Size(min=1, max=1)
+	@Pattern(regexp = "[" + Coordinates.NORTH + Coordinates.SOUTH + "]")
 	private String latitude;
 	@Size(min=1, max=2)
 	private int latitudeDegree;
@@ -12,8 +16,10 @@ public class CoordinatesForm {
 	private int latitudeMinute;
 	@Size(min=1, max=2)
 	private double latitudeSecond;
+	
 	// południk 180
 	@Size(min=1, max=1)
+	@Pattern(regexp = "[" + Coordinates.WEST + Coordinates.EAST + "]")
 	private String longitude;
 	@Size(min=1, max=2)
 	private int longitudeDegree;

@@ -1,10 +1,10 @@
 package onlineTimetables.entity.address;
 
 public class Coordinates {
-	private final String NORTH = "N";
-	private final String SOUTH = "S";
-	private final String WEST = "W";
-	private final String EAST = "E";
+	public static final String NORTH = "N";
+	public static final String SOUTH = "S";
+	public static final String WEST = "W";
+	public static final String EAST = "E";
 	private final int LATITUDE_MIN = 0;
 	private final int LATITUDE_MAX = 90;
 	private final int LONGITUDE_MIN = 0;
