@@ -1,5 +1,7 @@
 package onlineTimetables.entity.address.form;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -11,10 +13,16 @@ public class CoordinatesForm {
 	@Pattern(regexp = "[" + Coordinates.NORTH + Coordinates.SOUTH + "]")
 	private String latitude;
 	@Size(min=1, max=2)
+	@Min(value = Coordinates.LATITUDE_MIN)
+	@Max(value = Coordinates.LATITUDE_MAX)
 	private int latitudeDegree;
 	@Size(min=1, max=2)
+	@Min(value = Coordinates.TIME_MIN)
+	@Max(value = Coordinates.TIME_MAX)
 	private int latitudeMinute;
 	@Size(min=1, max=2)
+	@Min(value = Coordinates.TIME_MIN)
+	@Max(value = Coordinates.TIME_MAX)
 	private double latitudeSecond;
 	
 	// południk 180
@@ -22,10 +30,16 @@ public class CoordinatesForm {
 	@Pattern(regexp = "[" + Coordinates.WEST + Coordinates.EAST + "]")
 	private String longitude;
 	@Size(min=1, max=2)
+	@Min(value = Coordinates.LONGITUDE_MIN)
+	@Max(value = Coordinates.LONGITUDE_MAX)
 	private int longitudeDegree;
 	@Size(min=1, max=2)
+	@Min(value = Coordinates.TIME_MIN)
+	@Max(value = Coordinates.TIME_MAX)
 	private int longitudeMinute;
 	@Size(min=1, max=2)
+	@Min(value = Coordinates.TIME_MIN)
+	@Max(value = Coordinates.TIME_MAX)
 	private double longitudeSecond;
 
 	public String getLatitude() {

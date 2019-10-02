@@ -5,13 +5,14 @@ public class Coordinates {
 	public static final String SOUTH = "S";
 	public static final String WEST = "W";
 	public static final String EAST = "E";
-	private final int LATITUDE_MIN = 0;
-	private final int LATITUDE_MAX = 90;
-	private final int LONGITUDE_MIN = 0;
-	private final int LONGITUDE_MAX = 180;
-	private final int TIME_MIN = 0;
-	private final int TIME_MAX = 60;
+	public static final int LATITUDE_MIN = 0;
+	public static final int LATITUDE_MAX = 90;
+	public static final int LONGITUDE_MIN = 0;
+	public static final int LONGITUDE_MAX = 180;
+	public static final int TIME_MIN = 0;
+	public static final int TIME_MAX = 60;
 	private final int ZERO_TO_SMALLER_THAN = 10;
+	private final int ROUND_SECONDS_TO = 10;
 
 	// równoleżnik 90
 	private String latitude;
@@ -127,7 +128,7 @@ public class Coordinates {
 	}
 
 	private String createDoubleNumbers(double doubleNumber) {
-		double second = roundNumber(doubleNumber, 10);
+		double second = roundNumber(doubleNumber, ROUND_SECONDS_TO);
 		if (second < ZERO_TO_SMALLER_THAN)
 			return ("0" + second);
 		return Double.toString(second);
