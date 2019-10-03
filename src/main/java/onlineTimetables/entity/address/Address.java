@@ -4,7 +4,7 @@ public class Address {
 	private String voivodeship;
 	private String city;
 	private String street;
-	private double number;
+	private int number;
 	private ZipCode zipcode;
 	
 	public String getVoivodeship() {
@@ -25,10 +25,10 @@ public class Address {
 	public void setStreet(String street) {
 		this.street = street;
 	}
-	public double getNumber() {
+	public int getNumber() {
 		return number;
 	}
-	public void setNumber(double number) {
+	public void setNumber(int number) {
 		this.number = number;
 	}
 	public ZipCode getZipcode() {
