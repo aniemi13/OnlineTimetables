@@ -1,12 +1,15 @@
 package onlineTimetables.logic;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import onlineTimetables.entity.users.form.LoginForm;
 
 public class ApplicationLogic {
+	@Autowired
+	private LoginLogic loginLogic;
 
 	public String login(LoginForm loginForm) {
-		// TODO Auto-generated method stub
-		return null;
+		return loginLogic.login(loginForm);
 	}
 	//logika rejestracji
 	//logika logownia
