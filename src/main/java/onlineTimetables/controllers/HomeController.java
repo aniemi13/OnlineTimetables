@@ -11,15 +11,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import onlineTimetables.data.EmployeesRepository;
 import onlineTimetables.entity.users.form.LoginForm;
-import onlineTimetables.logic.ApplicationLogic;
+import onlineTimetables.entity.users.form.RegistrationForm;
+import onlineTimetables.logic.DispatcherApplicationLogic;
 
 @Controller
 public class HomeController {
 	@Autowired
-	private ApplicationLogic logic;
+	private DispatcherApplicationLogic logic;
 	
-	//zaloguj
 	@RequestMapping(value = "/zaloguj", method = RequestMethod.POST)
+	@ResponseBody
 	public String login(@Valid LoginForm loginForm, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			return "/";
@@ -27,14 +28,27 @@ public class HomeController {
 		return logic.login(loginForm);
 	}
 	
-	@RequestMapping("/zarejestruj")
-	public String registration() {
-		return "/zarejestruj";
+	@RequestMapping(value = "/zarejestruj", method = RequestMethod.POST)
+	@ResponseBody
+	public String registration(@Valid RegistrationForm registrationForm, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			return "/";
+		}
+		return logic.registration(registrationForm);
 	}
+	
 	
 	//przejdz do strony rejestracji
 	
-	//wyszukaj
+	@RequestMapping(value = "/wyszukaj_przystanek", method = RequestMethod.GET)
+	public String searchStop() {
+		return null;
+	}
+	
+	@RequestMapping(value = "/wyszukaj_trase", method = RequestMethod.GET)
+	public String searchRoute() {
+		return null;
+	}
 	
 	//wyloguj
 	

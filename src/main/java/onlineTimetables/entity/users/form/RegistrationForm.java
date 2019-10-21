@@ -5,7 +5,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class LoginForm {
+public class RegistrationForm {
 	@NotNull
 	@NotEmpty
 	@Size(min = 3)
@@ -15,6 +15,10 @@ public class LoginForm {
 	@NotEmpty
 	@Size(min = 8)
 	private String password;
+	@NotNull
+	@NotEmpty
+	@Size(min = 8)
+	private String repeatedPassword;
 
 	public String getEmail() {
 		return email;
@@ -31,4 +35,13 @@ public class LoginForm {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public String getRepeatedPassword() {
+		return repeatedPassword;
+	}
+
+	public void setRepeatedPassword(String repeatedPassword) {
+		this.repeatedPassword = repeatedPassword;
+	}
+
 }
