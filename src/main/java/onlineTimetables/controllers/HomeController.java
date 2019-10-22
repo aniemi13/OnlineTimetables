@@ -28,17 +28,22 @@ public class HomeController {
 		return logic.login(loginForm);
 	}
 	
-	@RequestMapping(value = "/zarejestruj", method = RequestMethod.POST)
-	@ResponseBody
-	public String registration(@Valid RegistrationForm registrationForm, BindingResult bindingResult) {
-		if (bindingResult.hasErrors()) {
-			return "/";
-		}
-		return logic.registration(registrationForm);
-	}
+	//TO DO FORMULARZA REJESTRACJI
+//	@RequestMapping(value = "/zarejestruj", method = RequestMethod.POST)
+//	@ResponseBody
+//	public String registration(@Valid RegistrationForm registrationForm, BindingResult bindingResult) {
+//		if (bindingResult.hasErrors()) {
+//			return "/";
+//		}
+//		return logic.registration(registrationForm);
+//	}
 	
 	
 	//przejdz do strony rejestracji
+	@RequestMapping("/rejestracja")
+	public String goToRegistrationForm() {
+		return "rejestracja";
+	}
 	
 	@RequestMapping(value = "/wyszukaj_przystanek", method = RequestMethod.GET)
 	public String searchStop() {
