@@ -16,9 +16,13 @@ import onlineTimetables.logic.DispatcherApplicationLogic;
 
 @Controller
 public class HomeController {
-	@Autowired
 	private DispatcherApplicationLogic logic;
 	
+	@Autowired
+	public HomeController(DispatcherApplicationLogic logic) {
+		this.logic = logic;
+	}
+
 	@RequestMapping(value = "/zaloguj", method = RequestMethod.POST)
 	@ResponseBody
 	public String login(@Valid LoginForm loginForm, BindingResult bindingResult) {
@@ -41,6 +45,7 @@ public class HomeController {
 	
 	//przejdz do strony rejestracji
 	@RequestMapping("/rejestracja")
+	@ResponseBody
 	public String goToRegistrationForm() {
 		return "rejestracja";
 	}
@@ -50,14 +55,24 @@ public class HomeController {
 		return null;
 	}
 	
-	@RequestMapping(value = "/wyszukaj_trase", method = RequestMethod.GET)
-	public String searchRoute() {
-		return null;
-	}
+//	@RequestMapping(value = "/wyszukaj_trase", method = RequestMethod.GET)
+//	public String searchRoute() {
+//		return null;
+//	}
 	
 	//wyloguj
+	@RequestMapping("/wyloguj")
+	@ResponseBody
+	public String logOut() {
+		return logic.logOut();
+	}
 	
 	//przejdz na profil użytkownika
+	@RequestMapping("/uzytkownik")
+	@ResponseBody
+	public String goToUserProfile() {
+		return logic.goToUserProfile();
+	}
 	
 	@RequestMapping("/")
 	@ResponseBody

@@ -29,5 +29,11 @@ public class DispatcherApplicationLogic {
 		
 	}
 
-	
+	public String logOut() {
+		return loginLogic.logOut();
+	}
+
+	public String goToUserProfile() {
+		return loginLogic.goToUserProfile();
+	}
 }
