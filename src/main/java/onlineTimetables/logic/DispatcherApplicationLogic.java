@@ -16,7 +16,6 @@ public class DispatcherApplicationLogic {
 
 	public String login(LoginForm loginForm) {
 		return loginLogic.login(loginForm);
-		
 	}
 	// logika logownia
 	// logika wyszukiwania

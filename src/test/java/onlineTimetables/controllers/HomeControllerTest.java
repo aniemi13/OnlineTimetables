@@ -10,6 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -17,16 +18,17 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import onlineTimetables.entity.users.form.LoginForm;
 import onlineTimetables.logic.DispatcherApplicationLogic;
 
-//@RunWith(SpringRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
 //@WebMvcTest
 public class HomeControllerTest {
 
 	@Test
 	public void testLogin() throws Exception {
 		DispatcherApplicationLogic logic = mock(DispatcherApplicationLogic.class);
+//		LoginForm lf = mock(LoginForm.class);
 		LoginForm loginForm = new LoginForm();
-		loginForm.setEmail("niemczyk13@o2.pl");
-		loginForm.setPassword("asdasdasd");
+//		loginForm.setEmail("niemczyk13@o2.pl");
+//		loginForm.setPassword("asdasdasd");
 		when(logic.login(loginForm)).thenReturn("nie_zalogowano");
 		
 		HomeController controller = new HomeController(logic);
