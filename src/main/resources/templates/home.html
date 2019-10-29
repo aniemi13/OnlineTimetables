@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org1">
+<head lang="pl">
+<meta charset="UTF-8">
+<title>Witaj w rozkładzie jazdy!</title>
+</head>
+<body>
+<!-- Wyświetlane zależnie od tego czy ktoś jest zalogowany czy nie -->
+	<form action="/zaloguj" method="post">
+		email:
+		<input type="text" name="email">
+		hasło:
+		<input type="password" name="password">
+		<button>Zaloguj</button>
+	</form>
+
+	<form action="/rejestracja">
+		<button>Rejestracja</button>
+	</form>
+	
+	<span th:text="|Witaj w rozkładzie jazdy!!!|">Witaj w rozkładzie
+		jazdy!</span>
+</body>
+</html>

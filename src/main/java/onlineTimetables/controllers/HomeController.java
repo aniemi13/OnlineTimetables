@@ -24,10 +24,9 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/zaloguj", method = RequestMethod.POST)
-	@ResponseBody
 	public String login(@Valid LoginForm loginForm, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
-			return "/";
+			return "redirect:/";
 		}
 		return logic.login(loginForm);
 	}
@@ -75,8 +74,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/")
-	@ResponseBody
 	public String home() {
-		return "Witaj świecie!";
+		return "home";
 	}
 }
