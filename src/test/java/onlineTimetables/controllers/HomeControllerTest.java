@@ -36,7 +36,7 @@ public class HomeControllerTest {
 
 	@Test
 	public void testLogin() throws Exception {
-		when(logic.login(loginForm)).thenReturn("nie_zalogowano");
+//		when(logic.login(loginForm)).thenReturn("nie_zalogowano");
 		
 		mockMvc.perform(post("/zaloguj")
 			.param("email", "niemczyk13@o2.pl")

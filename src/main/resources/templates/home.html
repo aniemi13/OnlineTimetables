@@ -1,24 +1,65 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org1">
+<html xmlns:th="http://www.thymeleaf.org">
 <head lang="pl">
-<meta charset="UTF-8">
 <title>Witaj w rozkładzie jazdy!</title>
+<!-- <link href="/webjars/materializecss/1.0.0/css/materialize.css" -->
+<!-- 	type="text/css" rel="stylesheet" media="screen,projection"> -->
 </head>
 <body>
-<!-- Wyświetlane zależnie od tego czy ktoś jest zalogowany czy nie -->
-	<form action="/zaloguj" method="post">
-		email:
-		<input type="text" name="email">
-		hasło:
-		<input type="password" name="password">
-		<button>Zaloguj</button>
-	</form>
+	<!-- Wyświetlane zależnie od tego czy ktoś jest zalogowany czy nie -->
+	<!-- 	<form th:action="@{/zaloguj}" th:object="${loginForm}" method="post"> -->
+	<!-- 		<!-- 		<div class="row"> -->
+	<!-- 		<div> -->
+	<!-- 			<!-- 			<div class="col m8 offset-m2 s12"> -->
+	<!-- 			<div> -->
 
-	<form action="/rejestracja">
-		<button>Rejestracja</button>
+	<!-- 								<div class="form-group row ewmail required user_email"> -->
+	<!-- 				<div> -->
+
+	<!-- 					email: -->
+	<!-- 										<div class="col-sm-9"> -->
+
+	<!-- 						<fieldset> -->
+	<!-- 							<label>email</label> -->
+	<!-- 							<input th:field="${loginForm.email}" type="text" id="email"> -->
+	<!-- 							<label>hasło</label> -->
+	<!-- 							<input th:field="${loginForm.password}" type="password" id="password"> -->
+	<!-- 						</fieldset> -->
+	<!-- 					<div> -->
+	<!-- 						<input th:field="${loginForm.email}" type="text" id="email" -->
+	<!-- 							th:errorclass="invalid"> -->
+	<!-- 					</div> -->
+<!-- 						<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" -->
+<!-- 							class="red-text">Błąd</div> -->
+
+	<!-- 										<div class="col-sm-9"> -->
+	<!-- 					<div> -->
+	<!-- 						<input th:field="${loginForm.password}" type="password" -->
+	<!-- 							id="password" th:errorclass="invalid"> -->
+	<!-- 					</div> -->
+	<!-- 					<div th:if="${#fields.hasErrors('password')}" -->
+	<!-- 						th:errors="*{password}" class="red-text">Błąd</div> -->
+	<!-- 						<input type="submit" value="Zaloguj"> -->
+
+	<!-- 				</div> -->
+	<!-- 			</div> -->
+	<!-- 		</div> -->
+	<!-- 	</form> -->
+	<form th:action="@{/zaloguj}" th:object="${loginForm}" method="post">
+		<fieldset>
+			<label>email</label> 
+			<input th:field="${loginForm.email}" type="text"id="email" required> <br> 
+			<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Błąd</div>
+			<label>hasło</label> 
+			<input th:field="${loginForm.password}" type="password" id="password" required 
+			th:if="not ${bez_hasla}"> <br>
+			<div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Błąd</div>
+		</fieldset>
+		<p><input type="submit" value="Zaloguj"></p>
 	</form>
 	
-	<span th:text="|Witaj w rozkładzie jazdy!!!|">Witaj w rozkładzie
-		jazdy!</span>
+	<form action="/rejestracja">
+		<input type="submit" value="Rejestracja">
+	</form>
 </body>
 </html>

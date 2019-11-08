@@ -14,7 +14,7 @@ public class DispatcherApplicationLogic {
 	@Autowired
 	private LoginLogic loginLogic;
 
-	public String login(LoginForm loginForm) {
+	public boolean login(LoginForm loginForm) {
 		return loginLogic.login(loginForm);
 	}
 	// logika logownia

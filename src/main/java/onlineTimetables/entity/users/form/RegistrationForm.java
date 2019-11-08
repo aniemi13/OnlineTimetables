@@ -18,7 +18,7 @@ public class RegistrationForm {
 	@NotNull
 	@NotEmpty
 	@Size(min = 8)
-	private String repeatedPassword;
+	private String confirmPassword;
 
 	public String getEmail() {
 		return email;
@@ -36,12 +36,12 @@ public class RegistrationForm {
 		this.password = password;
 	}
 
-	public String getRepeatedPassword() {
-		return repeatedPassword;
+	public String getConfirmPassword() {
+		return confirmPassword;
 	}
 
-	public void setRepeatedPassword(String repeatedPassword) {
-		this.repeatedPassword = repeatedPassword;
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 
 }

@@ -12,14 +12,14 @@ public class LoginLogic {
 	@Autowired
 	private UsersRepository usersRepository;
 
-	public String login(LoginForm loginForm) {
+	public boolean login(LoginForm loginForm) {
 		User user;
 		user = usersRepository.findUser(loginForm);
 		if (userExist(user)) {
 			//PLUS DODANIE DO SESJI DANYCH ZALOGOWANEGO UŻYTKOWNIKA
-			return "zalogowano";
+			return true;
 		}
-		return "nie_zalogowano";
+		return false;
 	}
 
 	private boolean userExist(User user) {

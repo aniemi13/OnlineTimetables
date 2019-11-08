@@ -28,7 +28,7 @@ public class RegistrationLogic {
 	}
 	
 	private boolean checkIdThePasswordsAreTheSame(RegistrationForm registrationForm) {
-		return registrationForm.getPassword().equals(registrationForm.getRepeatedPassword());
+		return registrationForm.getPassword().equals(registrationForm.getConfirmPassword());
 	}
 
 }

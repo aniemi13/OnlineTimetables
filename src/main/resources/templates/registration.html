@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="pl">
+<title>Witaj w rozkładzie jazdy!</title>
+<link href="/webjars/materializecss/1.0.0/css/materialize.css"
+	type="text/css" rel="stylesheet" media="screen,projection">
+</head>
+<body>
+	<!-- Wyświetlane zależnie od tego czy ktoś jest zalogowany czy nie -->
+	<form th:action="@{/zarejestruj}" th:object="${registrationForm}" method="post">
+		<!-- 	<ul th:if="${#fields.hasErrors('*')}" class="errorList1"> -->
+		<!-- 		<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li> -->
+		<!-- 	</ul> -->
+
+					email:
+						<input th:field="${registrationForm.email}" type="text" id="email"
+							th:errorclass="invalid">
+					<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+						class="red-text">Błąd</div>
+
+						<input th:field="${registrationForm.password}" type="password"
+							id="password" th:errorclass="invalid">
+					
+						<input th:field="${registrationForm.confirmPassword}" type="password"
+							id="confirmPassword" th:errorclass="invalid">
+					
+					<div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+						class="red-text">Błąd</div>
+					<input type="submit" value="Zaloguj">
+
+	</form>
+	<form action="/home">
+		<input type="submit" value="Anuluj">
+	</form>
+</body>
+</html>
