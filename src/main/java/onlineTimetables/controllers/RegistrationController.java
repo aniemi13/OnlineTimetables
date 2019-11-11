@@ -4,41 +4,66 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import onlineTimetables.entity.users.form.RegistrationForm;
-import onlineTimetables.logic.DispatcherApplicationLogic;
+import onlineTimetables.logic.RegistrationLogic;
 import onlineTimetables.logic.validation.RegistrationValidation;
 
 @Controller
 public class RegistrationController {
-	private DispatcherApplicationLogic logic;
+	private RegistrationLogic logic;
 	private RegistrationValidation validation;
 
 	@Autowired
-	public RegistrationController(DispatcherApplicationLogic logic) {
+	public RegistrationController(RegistrationLogic logic, RegistrationValidation validation) {
 		this.logic = logic;
+		this.validation = validation;
+	}
+	
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+		binder.addValidators(validation);
 	}
 
-	// TO DO FORMULARZA REJESTRACJI
 	@PostMapping("/zarejestruj")
-	public String registration(@Valid RegistrationForm registrationForm, BindingResult bindingResult) {
+	public ModelAndView registration(@Valid RegistrationForm registrationForm, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView();
-		validation.validate(registrationForm, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "/registration";
+			return returnValidationErrorsAndGoToRegistrationView(modelAndView);
 		}
-		return logic.registration(registrationForm);
+		if (!logic.registration(registrationForm)) {
+			return returnRegistrationErrorAndGoToRegistrationView(modelAndView);
+		}
+		return redirectToHomeView(modelAndView);
 	}
 
-	// przejdz do strony rejestracji
+	private ModelAndView redirectToHomeView(ModelAndView modelAndView) {
+		modelAndView.setViewName("redirect:/home");
+		return modelAndView;
+	}
+
+	private ModelAndView returnRegistrationErrorAndGoToRegistrationView(ModelAndView modelAndView) {
+		modelAndView.addObject("registration_error", "Błąd rejestracji");
+		modelAndView.setViewName("/registration");
+		return modelAndView;
+	}
+
+	private ModelAndView returnValidationErrorsAndGoToRegistrationView(ModelAndView modelAndView) {
+		modelAndView.setViewName("/registration");
+		return modelAndView;
+	}
+
 	@GetMapping("/rejestracja")
-	public String goToRegistrationForm(Model model) {
-		model.addAttribute("registrationForm", new RegistrationForm());
-		return "/registration";
+	public ModelAndView goToRegistrationForm() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("registrationForm", new RegistrationForm());
+		modelAndView.setViewName("/registration");
+		return modelAndView;
 	}
 }

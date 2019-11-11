@@ -13,8 +13,9 @@ public class LoginLogic {
 	private UsersRepository usersRepository;
 
 	public boolean login(LoginForm loginForm) {
+		String email = loginForm.getEmail();
 		User user;
-		user = usersRepository.findUser(loginForm);
+		user = usersRepository.findUser(email);
 		if (userExist(user)) {
 			//PLUS DODANIE DO SESJI DANYCH ZALOGOWANEGO UŻYTKOWNIKA
 			return true;

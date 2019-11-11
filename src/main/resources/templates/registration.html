@@ -2,31 +2,29 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="pl">
 <title>Witaj w rozkładzie jazdy!</title>
-<link href="/webjars/materializecss/1.0.0/css/materialize.css"
-	type="text/css" rel="stylesheet" media="screen,projection">
+<!-- <link href="/webjars/materializecss/1.0.0/css/materialize.css" -->
+<!-- 	type="text/css" rel="stylesheet" media="screen,projection"> -->
 </head>
 <body>
 	<!-- Wyświetlane zależnie od tego czy ktoś jest zalogowany czy nie -->
-	<form th:action="@{/zarejestruj}" th:object="${registrationForm}" method="post">
-		<!-- 	<ul th:if="${#fields.hasErrors('*')}" class="errorList1"> -->
-		<!-- 		<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li> -->
-		<!-- 	</ul> -->
+	<form th:action="@{/zarejestruj}" th:object="${registrationForm}"
+		method="post">
+		email: <input th:field="${registrationForm.email}" type="text"
+			id="email" required><br>
+		<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+			class="red-text">Błąd</div>
 
-					email:
-						<input th:field="${registrationForm.email}" type="text" id="email"
-							th:errorclass="invalid">
-					<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
-						class="red-text">Błąd</div>
+		hasło: <input th:field="${registrationForm.password}" type="password"
+			id="password" required><br> 
+			
+		powtórz hasło:	<input th:field="${registrationForm.confirmPassword}" type="password"
+			id="confirmPassword" required><br>
 
-						<input th:field="${registrationForm.password}" type="password"
-							id="password" th:errorclass="invalid">
-					
-						<input th:field="${registrationForm.confirmPassword}" type="password"
-							id="confirmPassword" th:errorclass="invalid">
-					
-					<div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
-						class="red-text">Błąd</div>
-					<input type="submit" value="Zaloguj">
+		<div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+			class="red-text">Błąd</div>
+			
+		<div th:text="${registration_error}">Błąd</div>
+		<input type="submit" value="Zarejestruj">
 
 	</form>
 	<form action="/home">

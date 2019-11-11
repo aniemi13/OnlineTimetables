@@ -8,20 +8,15 @@ import onlineTimetables.entity.users.form.RegistrationForm;
 
 @Component
 public class UsersRepository {
-
-	public User findUser(LoginForm loginForm) {
-		// TODO Auto-generated method stub
+	
+	public User findUser(String email) {
+		
 		return null;
 	}
-
-	public boolean findUser(RegistrationForm registrationForm) {
-		// TODO Auto-generated method stub
+	
+	public boolean addUser(String email,
+			String password, String confirmPassword) {
+		
 		return false;
 	}
-
-	public boolean addUser(RegistrationForm registrationForm) {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
 }

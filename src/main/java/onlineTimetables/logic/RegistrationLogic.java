@@ -8,27 +8,17 @@ import onlineTimetables.entity.users.form.RegistrationForm;
 
 @Component
 public class RegistrationLogic {
-	@Autowired
 	private UsersRepository usersRepository;
 
-	public String registration(RegistrationForm registrationForm) {
-		if (!usersRepository.findUser(registrationForm)) {
-			return "podany email istnieje w bazie";
-		}
-		
-		if (!checkIdThePasswordsAreTheSame(registrationForm)) {
-			return "hasła nie są identyczne";
-		}
-		
-		if (usersRepository.addUser(registrationForm)) {
-			return "zarejestrowano";
-		}
-		
-		return "nie zarejestrowano - błąd rejestracji";
-	}
-	
-	private boolean checkIdThePasswordsAreTheSame(RegistrationForm registrationForm) {
-		return registrationForm.getPassword().equals(registrationForm.getConfirmPassword());
+	@Autowired
+	public RegistrationLogic(UsersRepository usersRepository) {
+		this.usersRepository = usersRepository;
 	}
 
+	public boolean registration(RegistrationForm registrationForm) {
+		String email = registrationForm.getEmail();
+		String password = registrationForm.getPassword();
+		String confirmPassword = registrationForm.getConfirmPassword();
+		return usersRepository.addUser(email, password, confirmPassword);
+	}
 }
